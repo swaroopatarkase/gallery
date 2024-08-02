@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Villa Gallery</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: rgb(187, 194, 194);
+        }
+        h1 {
+            text-align: center;
+            font-size: 50px;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            margin: 20px;
+            color: #333;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1); 
+        }
+        .sub-head{
+            text-align: center;
+            font-size: 30px;
+            font-family: cursive;
+        }
+        .main {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 20px auto;
+            max-width: 800px; 
+        }
+        .next {
+            height: 60px;
+            width: 60px;
+            border: 2px solid #333; 
+            border-radius: 50%;
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            transition: all 0.3s ease; 
+            margin: 0 20px;
+        }
+        .pre{
+            height: 60px;
+            width: 60px;
+            border: 2px solid #333; 
+            border-radius: 50%;
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            margin: 0 20px;
+        }
+        .next:hover {
+            background-color: #f0f0f0; 
+            transition: 0.5sec; 
+        }
+        .pre:hover {
+            background-color: #f0f0f0; 
+            transition: 0.5sec;
+        }
+        .main-img {
+            width: 400px; 
+            height: 300px; 
+            max-width: 100%; 
+            border: 2px solid #ddd; 
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .bottom {
+            display: flex;
+            justify-content: center;
+        }
+        .sample{
+            width: 200px;
+            margin: 15px;
+            border-radius: 10px;
+            border: 1px solid black;
+        }
+        .footer{
+            text-align: center;
+            font-size: 30px;
+            margin-top: 5px;
+            font-family: cursive;
+        }
+    </style>
+</head>
+<body>
+    <h1>Villa Gallery</h1>
+    <div class="sub-head">
+        Choice Your Dream Villa
+    </div>
+    <div class="main">
+        <img src="./left-arrow.png" class="pre" onclick="prev()" alt="Previous"/>
+        <img src="./download (1).jpg" class="main-img" id="main-img" alt="Main Image"/>
+        <img src="./right-arrow.png" class="next" onclick="next()" alt="Next"/>
+    </div>
+    <div class="bottom">
+        <img src="./download (1).jpg" class="sample"/>
+        <img src="./download(2).jpg" class="sample"/>
+        <img src="./download (3).jpg" class="sample"/>
+        <img src="./download (4).jpg" class="sample"/>
+        <img src="./download (5).jpg" class="sample"/>
+    </div>
+    <div class="footer">
+        Thank You..!! See You At Your Villa..!!
+    </div>
+    <script>
+        let images = [
+            "./download (1).jpg",
+            "./download(2).jpg",
+            "./download (3).jpg",
+            "./download (4).jpg",
+            "./download (5).jpg"
+        ];
+
+        let imgIndex = 0;
+
+        function showImage(index) {
+            const imgElement = document.getElementById('main-img');
+            imgElement.src = images[index];
+        }
+
+        function prev() {
+            if (imgIndex === 0) {
+                imgIndex = images.length - 1;
+            } else {
+                imgIndex--;
+            }
+            showImage(imgIndex);
+        }
+
+        function next() {
+            if (imgIndex === images.length - 1) {
+                imgIndex = 0;
+            } else {
+                imgIndex++;
+            }
+            showImage(imgIndex);
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            showImage(imgIndex);
+        });
+    </script>
+</body>
+</html>
